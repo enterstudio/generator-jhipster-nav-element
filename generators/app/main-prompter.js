@@ -22,6 +22,10 @@ function promptToChooseATemplate(generator) {
       {
         name: 'About Us',
         value: constants.TEMPLATE_TYPE.DEFAULT
+      },
+      {
+        name: 'Cards (Courtesy: Creative Tim)',
+        value: constants.TEMPLATE_TYPE.HIPSTER_AS_F_CARDS
       }
     ]
 
@@ -37,6 +41,9 @@ function promptTemplateSpecificQuestions(generator) {
     case constants.TEMPLATE_TYPE.DEFAULT:
       askDefaultTemplateQuestions(generator);
       break;
+    case constants.TEMPLATE_TYPE.HIPSTER_AS_F_CARDS:
+      askHipsterAsF___CardsTemplateQuestions(generator);
+      break;
   }
 }
 
@@ -45,5 +52,11 @@ function askDefaultTemplateQuestions(generator) {
     defaultNg2TemplatePrompter.askQuestions(generator);
   } else {
     defaultTemplatePrompter.askQuestions(generator);
+  }
+}
+
+function askHipsterAsF___CardsTemplateQuestions(generator) {
+  if (generator.jhipsterAppConfig.clientFramework === 'angularX') {
+    defaultNg2TemplatePrompter.askQuestions(generator);
   }
 }
